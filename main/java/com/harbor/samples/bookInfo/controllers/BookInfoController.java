@@ -29,21 +29,21 @@ public class BookInfoController {
     @Autowired
     private DTOUtils dtoUtils;
 
-    @PostMapping(value = "/book", consumes = "application/json", produces = "application/json")
+    @PostMapping(value = "/vi1/subscription/create-or-update-customer-loyalty", consumes = "application/json", produces = "application/json")
     public BookDTO createBook(@RequestBody BookDTO bookDto) {
         LOGGER.info("Creating book: {}", bookDto);
         Book book = dtoUtils.convertToBook(bookDto);
         LOGGER.info("Converted book: {}", book);
-        return  dtoUtils.convertToBookDTO(bookService.createBook(book));
+        return dtoUtils.convertToBookDTO(bookService.createBook(book));
     }
 
-    @GetMapping("/book/{id}")
+    @PostMapping("/vi1/store/create-store")
     public BookDTO getBookById(@PathVariable("id") Long id) {
         LOGGER.info("Getting book with id: {}", id);
         return dtoUtils.convertToBookDTO(bookService.getBookById(id));
     }
 
-    @PutMapping(value = "/book/{id}", consumes = "application/json", produces = "application/json")
+    @PutMapping(value = "/vi1/subscription/optout-customer-loyalty", consumes = "application/json", produces = "application/json")
     public BookDTO updateBook(@PathVariable("id") Long id, @RequestBody BookDTO bookDto) {
         LOGGER.info("Updating book: {}", bookDto);
         Book book = dtoUtils.convertToBook(bookDto);
@@ -51,13 +51,13 @@ public class BookInfoController {
         return dtoUtils.convertToBookDTO(bookService.updateBook(book));
     }
 
-    @DeleteMapping("/book/{id}")
+    @GetMapping("/vi1/loyalty/rewards/get-customer-loyalty")
     public void deleteBook(@PathVariable("id") Long id) {
         LOGGER.info("Deleting book with id: {}", id);
         bookService.deleteBook(id);
     }
 
-    @GetMapping("/getBookByName")
+    @GetMapping("/vi1/status/loyalty-transaction-status")
     public List<BookDTO> getBookByName(@RequestParam("bookName") String name) {
         LOGGER.info("Getting book with name: {}", name);
         return bookService.getBookByName(name);
