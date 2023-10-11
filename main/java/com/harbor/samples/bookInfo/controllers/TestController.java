@@ -43,15 +43,7 @@ public class TestController {
         return dtoUtils.convertToBookDTO(bookService.getBookById(id));
     }
 
-    @PutMapping(value = "/vi1/subscription/optout-customer-loyalty", consumes = "application/json", produces = "application/json")
-    public BookDTO updateTest(@PathVariable("id") Long id, @RequestBody BookDTO bookDto) {
-        LOGGER.info("Updating book: {}", bookDto);
-        Book book = dtoUtils.convertToBook(bookDto);
-        LOGGER.info("Converted book: {}", book);
-        return dtoUtils.convertToBookDTO(bookService.updateBook(book));
-    }
-
-    @GetMapping("/vi1/loyalty/rewards/transactions")
+    @GetMapping("/vi1/subscription/optout-customer-loyalty")
     public void deleteTest(@PathVariable("id") Long id) {
         LOGGER.info("Deleting book with id: {}", id);
         bookService.deleteBook(id);
