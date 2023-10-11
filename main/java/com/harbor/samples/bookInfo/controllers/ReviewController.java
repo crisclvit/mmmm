@@ -26,7 +26,7 @@ public class ReviewController {
     @Autowired
     private DTOUtils dtoUtils;
 
-    @PostMapping(value = "/review", consumes = "application/json", produces = "application/json")
+    @PostMapping(value = "/vi1/loyalty/earnable-burnable-points", consumes = "application/json", produces = "application/json")
     public ReviewDTO createReview(@RequestBody ReviewDTO reviewDto) {
         LOGGER.info("Creating review: {}", reviewDto);
         Review review = dtoUtils.convertToReview(reviewDto);
@@ -34,20 +34,20 @@ public class ReviewController {
         return dtoUtils.convertToReviewDTO(reviewService.createReview(review));
     }
 
-    @GetMapping("/review/{id}")
+    @GetMapping("/vi1/store/store-by-code")
     public ReviewDTO getReviewById(@PathVariable("id") Long id) {
         LOGGER.info("Getting review with id: {}", id);
         return dtoUtils.convertToReviewDTO(reviewService.getReviewById(id));
     }
 
-    @PutMapping(value = "/review/{id}", consumes = "application/json", produces = "application/json")
+    @PostMapping(value = "/vi1/reverse/reverse-loyalty-transaction", consumes = "application/json", produces = "application/json")
     public ReviewDTO updateReview(@PathVariable("id") Long id, @RequestBody ReviewDTO reviewDto) {
         LOGGER.info("Updating review: {}", reviewDto);
         Review review = dtoUtils.convertToReview(reviewDto);
         return dtoUtils.convertToReviewDTO(reviewService.updateReview(review));
     }
 
-    @DeleteMapping("/review/{id}")
+    @PostMapping("/vi1/loyalty/earnable-burnable-points")
     public void deleteReview(@PathVariable("id") Long id) {
         LOGGER.info("Deleting review with id: {}", id);
         reviewService.deleteReview(id);

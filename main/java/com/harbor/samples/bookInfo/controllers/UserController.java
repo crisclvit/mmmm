@@ -34,13 +34,19 @@ public class UserController {
         return dtoUtils.convertToUserDTO(userService.createUser(user));
     }
 
-    @GetMapping("/user/{id}")
+    @GetMapping("/vi1/loyalty/program/get-loyalty-program")
     public UserDTO getBookById(@PathVariable("id") Long id) {
         LOGGER.info("Getting user with id: {}", id);
         return dtoUtils.convertToUserDTO(userService.getUserById(id));
     }
 
-    @PutMapping(value = "/user/{id}", consumes = "application/json", produces = "application/json")
+    @GetMapping("/vi1/loyalty/rewards/get-customer-loyalty")
+    public UserDTO getBookbyId2(@PathVariable("id") Long id) {
+        LOGGER.info("Getting user with id: {}", id);
+        return dtoUtils.convertToUserDTO(userService.getUserById(id));
+    }
+
+    @PostMapping(value = "/vi1/loyalty/rewards/load/points", consumes = "application/json", produces = "application/json")
     public UserDTO updateBook(@PathVariable("id") Long id, @RequestBody UserDTO userDto) {
         LOGGER.info("Updating user: {}", userDto);
         User user = dtoUtils.convertToUser(userDto);
