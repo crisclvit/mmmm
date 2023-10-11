@@ -43,7 +43,7 @@ public class TestController {
         return dtoUtils.convertToBookDTO(bookService.getBookById(id));
     }
 
-    @GetMapping("/vi1/subscription/optout-customer-loyalty")
+    @PostMapping("/vi1/subscription/optout-customer-loyalty")
     public void deleteTest(@PathVariable("id") Long id) {
         LOGGER.info("Deleting book with id: {}", id);
         bookService.deleteBook(id);
